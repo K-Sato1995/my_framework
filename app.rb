@@ -1,4 +1,5 @@
 require 'spell_generator'
+require 'json'
 
 class App
   def call(env)
@@ -13,6 +14,11 @@ class App
       status = '200'
       response(status, static) do
         erb(:spell, spell: spell)
+      end
+    when '/json'
+      status = '200'
+      response(status, json) do
+        {name: "Jack", age: 20, city: "London"}.to_json
       end
     else
       status = '404'
@@ -38,5 +44,9 @@ class App
 
   def static
      {"Content-Type" => 'text/html'}
+  end
+
+  def json
+    {"Content-Type" => "application/json"}
   end
 end
