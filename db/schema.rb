@@ -1,12 +1,9 @@
 require_relative 'db'
 
-# class Schema < Database
-#   TABLE_SCHEMA_POST = <<- SQL
-#    title varchar(30), content varchar(30)
-#   SQL
-# end
-
-class Post < Database
+class Schema < Database
+  POST = <<- SQL
+   title varchar(30), content varchar(30)
+  SQL
 end
 
 sql = 'title varchar(30), content varchar(30)'
